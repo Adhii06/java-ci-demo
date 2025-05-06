@@ -28,7 +28,8 @@ pipeline {
 
         dir('ci-demo') {
 
-          sh 'mvn clean install'
+          bat 'mvn clean install'
+
 
         }
 
