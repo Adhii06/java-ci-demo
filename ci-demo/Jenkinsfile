@@ -2,6 +2,12 @@ pipeline {
 
   agent any
 
+  tools {
+
+    maven 'Maven-3.9.9'
+
+  }
+
   stages {
 
     stage('Checkout Code') {
@@ -18,7 +24,13 @@ pipeline {
 
       steps {
 
-        sh 'mvn clean install'
+        // Change to the ci-demo directory before running Maven
+
+        dir('ci-demo') {
+
+          sh 'mvn clean install'
+
+        }
 
       }
 
@@ -28,7 +40,7 @@ pipeline {
 
       steps {
 
-        echo 'Simulating test execution...'
+        echo 'Running Tests...'
 
       }
 
@@ -38,7 +50,7 @@ pipeline {
 
       steps {
 
-        echo 'Simulating deployment step...'
+        echo 'Deploying...'
 
       }
 
@@ -47,4 +59,3 @@ pipeline {
   }
 
 }
-
